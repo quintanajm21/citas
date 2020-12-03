@@ -1,20 +1,54 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+      Citas
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content padding>
+  <ion-item >
+    <ion-label>Nombre</ion-label>
+    <ion-input [(ngModel)]="citaEditando.nombre"></ion-input>
+  </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-item>
+    <ion-label>Número de teléfono</ion-label>
+    <ion-input [(ngModel)]="citaEditando.numeroTlf"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Día</ion-label>
+    <ion-input [(ngModel)]="citaEditando.dia"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Tipo de corte</ion-label>
+    <ion-input [(ngModel)]="citaEditando.corte"></ion-input>
+  </ion-item>
+
+  <!-- botones -->
+  <ion-button (click)="clicBotonInsertar()">Añadir cita</ion-button>
+  <ion-button (click)="clicBotonBorrar()">Borrar cita</ion-button>
+  <ion-button (click)="clicBotonModificar()">Modificar tarea</ion-button>
+
+<!-- ver lista -->
+  <br>
+  <br>
+  <h1>Mis citas</h1>
+  <ion-list>
+    <ion-item *ngFor="let documentCita of arrayColeccionCitas" (click)="selecCita(documentCita)">
+      <ion-grid>
+        <ion-row>
+          <h2>{{documentCita.data.nombre}}</h2>
+        </ion-row>
+        <ion-row>
+          <p>Fecha: {{documentCita.data.dia}}</p>
+        </ion-row>
+        <ion-row>
+          <p>Tipo de corte: {{documentCita.data.corte}}</p>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
 </ion-content>
