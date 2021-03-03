@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Usuario</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+  
+  <ion-content padding>
+    <ion-item >
+      <ion-label>Nombre:</ion-label>
+      <ion-input [(ngModel)]="document.data.nombre"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Número de teléfono:</ion-label>
+      <ion-input [(ngModel)]="document.data.numeroTlf"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Día:</ion-label>
+      <ion-input [(ngModel)]="document.data.dia"></ion-input>
+    </ion-item>
+
+
+    <div *ngIf = "id == 'nuevo'">
+      <ion-item>
+        <ion-label>Tipo de corte:</ion-label>
+        <!-- <ion-input type= "file" (change)= "uploadImagePicker()"></ion-input> -->
+        <ion-button (click)= "uploadImagePicker()" >Seleccionar imagen</ion-button>
+      </ion-item>
+    </div>
+
+    <div *ngIf = "id != 'nuevo'">
+      <ion-item>
+        <ion-label>Tipo de corte:</ion-label>
+        <ion-img [src]="document.data.corte"></ion-img>
+        <ion-button (click)= "uploadImagePicker()" >Seleccionar imagen</ion-button>
+
+
+      </ion-item>
+    </div>
+
+    <div *ngIf = "id == 'nuevo'">
+      <ion-button (click)="clicBotonInsertar()">Guardar cita</ion-button>
+    </div>
+
+    <div *ngIf = "id != 'nuevo'">
+      <ion-button (click)="presentAlert()">Borrar cita</ion-button>
+      <ion-button (click)="clicBotonModificar()">Modificar cita</ion-button>
+      <ion-button (click)="regularSharing()">Share</ion-button>
+
+
+    </div>
+
+
+
+    <!-- <p> Título: {{ document.data.titulo }} </p> -->
+
+  
+
+</ion-content>
+

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FirestoreService } from '../firestore.service';
 import { Cita } from '../citas';
+import { Router } from "@angular/router";
+
 
 @Component({
   selector: 'app-home',
@@ -20,13 +22,33 @@ export class HomePage {
 
   idCitaSelec: string;
 
-
-  constructor(private firestoreService: FirestoreService) {
+  constructor(private firestoreService: FirestoreService, private router: Router) {
 
     this.citaEditando = {} as Cita;
     this.obtenerListaCitas();
 
   } 
+
+  clicBotonMas() {
+    this.router.navigate(["/user/nuevo"]);
+
+  }
+
+  clicBotonHome(){
+    this.router.navigate(["/home/"]);
+
+  }
+
+  clicBotonInfo(){
+    this.router.navigate(["/info/"]);
+
+  }
+
+  clicBotonMap(){
+    this.router.navigate(["/map/"]);
+
+  }
+
   
   clicBotonInsertar() {
     this.firestoreService.insertar("citas", this.citaEditando).then(() => {
@@ -56,6 +78,9 @@ export class HomePage {
     this.citaEditando.nombre = citaSelec.data.nombre;
     this.citaEditando.numeroTlf = citaSelec.data.numeroTlf;
     this.citaEditando.dia = citaSelec.data.dia;
+    this.router.navigate(["/user/",citaSelec.id]);
+
+
 
   }
 
@@ -76,6 +101,8 @@ export class HomePage {
       this.citaEditando = {} as Cita;
     })
   }
+
+  
 
   
 }
