@@ -173,11 +173,23 @@ export class UserPage implements OnInit {
   }
 
   regularSharing() {
-    this.socialSharing.share("Mi mensaje que comparto", null, null, null).then(() => {
+    let msg = "¡Hola, somos Peluquería!." + "\n" + "La fecha de tu cita es el" + this.document.data.dia + "." + "\n" + "Su corte de pelo lo puede ver en el siguiente enlace -->  " + this.document.data.corte + "\n" + "Muchas gracias por confiar en nosotros, un saludo.";
+    this.socialSharing.share(msg, null, null, null).then(() => {
       console.log("Se ha compartido correctamente");
     }).catch((error) => {
       console.log("Se ha producido un error: " + error);
     });
+  }
+
+  facebookShare(){
+    let msg = "¡Hola, somos Peluquería!." + "\n" + "La fecha de tu cita es el" + this.document.data.dia + "." + "\n" + "Su corte de pelo lo puede ver en el siguiente enlace -->  " + this.document.data.corte + "\n" + "Muchas gracias por confiar en nosotros, un saludo.";
+    this.socialSharing.shareViaFacebook(msg, null, null);
+   }
+
+   
+  twitterShare(){
+    let msg = "¡Hola, somos Peluquería!." + "\n" + "La fecha de tu cita es el" + this.document.data.dia + "." + "\n" + "Su corte de pelo lo puede ver en el siguiente enlace -->  " + this.document.data.corte + "\n" + "Muchas gracias por confiar en nosotros, un saludo.";
+    this.socialSharing.shareViaTwitter(msg, null, null);
   }
 
 

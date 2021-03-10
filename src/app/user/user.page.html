@@ -49,8 +49,13 @@
 
     <div *ngIf = "id != 'nuevo'">
       <ion-button (click)="presentAlert()">Borrar cita</ion-button>
+
+      
       <ion-button (click)="clicBotonModificar()">Modificar cita</ion-button>
-      <ion-button (click)="regularSharing()">Share</ion-button>
+      <br>
+      <ion-icon (click)="regularSharing()" name="share-social-outline"></ion-icon>
+      <ion-icon (click)="facebookShare()" name="logo-facebook"></ion-icon>
+      <ion-icon (click)="twitterShare()" name="logo-twitter"></ion-icon>
 
 
     </div>
